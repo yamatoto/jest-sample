@@ -25,7 +25,7 @@ describe('Clock', () => {
         expect(newDateElement?.textContent).toEqual(expect.stringContaining('2021-01-01 01:01:01'));
     });
 
-    test('日付が出力される - jest.spyOn', () => {
+    test('日付が出力される - globalのDateをspy', () => {
         const mockDate = new Date(2021, 1, 2, 2, 2, 2);
         const spy = jest.spyOn(global, 'Date').mockImplementation(() => mockDate as unknown as string);
 
@@ -38,7 +38,7 @@ describe('Clock', () => {
         spy.mockRestore();
     });
 
-    test('日付が出力される - mock', () => {
+    test('日付が出力される - 別途用意した関数をspy', () => {
         const mockDate = new Date(2021, 2, 3, 3, 3, 3);
         const spy = jest.spyOn(DateUtils, 'getNow').mockReturnValue(mockDate);
         render(<Clock />);
