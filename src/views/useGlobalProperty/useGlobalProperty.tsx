@@ -1,4 +1,4 @@
-export default function GlobalTest() {
+export default function UseGlobalProperty() {
     const COOKIE_KEY_NAME = 'hogeKey';
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
