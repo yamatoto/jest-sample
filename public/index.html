@@ -7,6 +7,15 @@
       name="description"
       content="Jestのサンプルコード"
     />
+      <script>
+          // globalオブジェクトテスト用コード
+          window.hogeProperty = {
+              hogeProp: "hoge",
+              hogeFn(arg1 = "", arg2 = "") {
+                  console.log(`${arg1}_${arg2}`)
+              }
+          };
+      </script>
     <title>Jest Sample</title>
   </head>
   <body>
