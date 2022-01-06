@@ -2,9 +2,9 @@
  * @jest-environment ./src/test/custom-js-dom-environment.ts
  */
 import { render, screen, fireEvent } from '@testing-library/react';
-import GlobalTest from './globalTest';
+import UseGlobalProperty from './useGlobalProperty';
 
-describe('GlobalTest', () => {
+describe('UseGlobalProperty', () => {
     test('hogeボタンクリック時、hogeFnが実行される', () => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
@@ -12,10 +12,11 @@ describe('GlobalTest', () => {
         const { hogeProp } = hogeProperty;
         const hogeFnSpy = jest.spyOn(hogeProperty, 'hogeFn');
 
-        render(<GlobalTest />);
+        render(<UseGlobalProperty />);
 
         fireEvent.click(screen.getByText(`${hogeProp}ボタン`));
 
+        expect(hogeFnSpy).toHaveBeenCalledTimes(1);
         expect(hogeFnSpy).toHaveBeenCalledWith(hogeProp, 'bar');
     });
 
@@ -32,7 +33,7 @@ describe('GlobalTest', () => {
         });
 
         test('setCookieボタンクリック時、cookieが設定される', () => {
-            render(<GlobalTest />);
+            render(<UseGlobalProperty />);
 
             fireEvent.click(screen.getByText('setCookie'));
 
@@ -43,7 +44,7 @@ describe('GlobalTest', () => {
         });
 
         test('removeCookieボタンクリック時、指定したキーのcookieが削除される', () => {
-            render(<GlobalTest />);
+            render(<UseGlobalProperty />);
 
             fireEvent.click(screen.getByText('removeCookie'));
 
